@@ -1,9 +1,43 @@
 #include "shell.h"
 
 /**
+<<<<<<< HEAD
  * print_error - prints an error message
  * @info: the parameter & return info struct
  * @errstr: string containing specified error type
+=======
+ * _erratoi - converts a string to an integer
+ * @s: pointer to the string to be converted
+ * Return: 0 if no numbers in string, converted number otherwise
+ *       -1 on error
+ */
+int _erratoi(char *s)
+{
+	int i = 0;
+	unsigned long int result = 0;
+
+	if (*s == '+')
+		s++;  /* TODO: why does this make main return 255? */
+	for (i = 0;  s[i] != '\0'; i++)
+	{
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+			result *= 10;
+			result += (s[i] - '0');
+			if (result > INT_MAX)
+				return (-1);
+		}
+		else
+			return (-1);
+	}
+	return (result);
+}
+
+/**
+ * print_error - prints an error message
+ * @info: A pointer to the parameter & return info struct
+ * @estr: A pointer to the string containing specified error type
+>>>>>>> be657a8607240020cc7d7a1416bf60e849c043bd
  * Return: 0 if no numbers in string, converted number otherwise
  *        -1 on error
  */
@@ -77,9 +111,15 @@ void remove_comments(char *buff)
 
 /**
  * convert_number - converter function, a clone of itoa
+<<<<<<< HEAD
  * @no: number
  * @base: base
  * @flags: argument flags
+=======
+ * @num: number var
+ * @base: base var
+ * @flags:the argument flags
+>>>>>>> be657a8607240020cc7d7a1416bf60e849c043bd
  *
  * Return: string
  */
@@ -112,10 +152,17 @@ char *convert_number(long int no, int base, int flags)
 }
 
 /**
+<<<<<<< HEAD
  * _erratoi - converts a string to an integer
  * @str: the string to be converted
  * Return: 0 if no numbers in string, converted number otherwise
  *       -1 on error
+=======
+ * remove_comments - function replaces first instance of '#' with '\0'
+ * @buf: address of the string to modify
+ *
+ * Return: 0
+>>>>>>> be657a8607240020cc7d7a1416bf60e849c043bd
  */
 int _erratoi(char *str)
 {

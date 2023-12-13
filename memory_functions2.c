@@ -2,7 +2,7 @@
 
 /**
  * bfree - frees a pointer and NULLs the address
- * @p: address of the pointer to free
+ * @p: address of the pointer to be freed
  *
  * Return: 1 if freed, otherwise 0.
  */
