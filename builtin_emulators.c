@@ -2,11 +2,11 @@
 
 /**
  * _mycd - changes the current directory of the process
- * @inf: Structure containing potential arguments. Used to maintain
+ * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  *  Return: Always 0
  */
-int _mycd(info_t *inf)
+int _mycd(info_t *info)
 {
 	char *str, *dirc, buff[1024];
 	int chgdir_ret;
@@ -14,26 +14,26 @@ int _mycd(info_t *inf)
 	str = getcwd(buff, 1024);
 	if (!str)
 		_puts("TODO: >>getcwd failure emsg here<<\n");
-	if (!inf->argv[1])
+	if (!info->argv[1])
 	{
-		dirc = _getenv(inf, "HOME=");
+		dirc = _getenv(info, "HOME=");
 		if (!dirc)
 			chgdir_ret = /* TODO: what should this be? */
-				chdir((dirc = _getenv(inf, "PWD=")) ? dir : "/");
+				chdir((dirc = _getenv(info, "PWD=")) ? dirc : "/");
 		else
 			chgdir_ret = chdir(dirc);
 	}
-	else if (_strcmp(inf->argv[1], "-") == 0)
+	else if (_strcmp(info->argv[1], "-") == 0)
 	{
-		if (!_getenv(inf, "OLDPWD="))
+		if (!_getenv(info, "OLDPWD="))
 		{
 			_puts(str);
 			_putchar('\n');
 			return (1);
 		}
-		_puts(_getenv(inf, "OLDPWD=")), _putchar('\n');
+		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
 		chgdir_ret = /* TODO: what should this be? */
-			chdir((dir = _getenv(inf, "OLDPWD=")) ? dir : "/");
+			chdir((dirc = _getenv(info, "OLDPWD=")) ? dirc : "/");
 	}
 	else
 		chgdir_ret = chdir(info->argv[1]);
@@ -45,7 +45,7 @@ int _mycd(info_t *inf)
 	else
 	{
 		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
-		_setenv(info, "PWD", getcwd(buffer, 1024));
+		_setenv(info, "PWD", getcwd(buff, 1024));
 	}
 	return (0);
 }
