@@ -2,9 +2,7 @@
 
 /**
  *_eputs - prints an input string
- * @str: the string to be printed
- *
- * Return: Nothing
+ * @str: pointer to the string to be printed
  */
 void _eputs(char *str)
 {
@@ -66,10 +64,10 @@ int _putfd(char c, int fd)
 
 /**
  *_putsfd - prints an input string
- * @str: the string to be printed
+ * @str: pointer to the string to be printed
  * @fd: the filedescriptor to write to
  *
- * Return: the number of chars put
+ * Return: the number of characters put
  */
 int _putsfd(char *str, int fd)
 {
