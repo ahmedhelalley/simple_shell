@@ -1,4 +1,4 @@
-----
+-----
 This is a project to create our simple shell interpreter
 Compilation
 
