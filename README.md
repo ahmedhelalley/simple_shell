@@ -1,6 +1,7 @@
 ------
 # SIMPLE SHELL PROJECT
-This is a project to create our simple shell interpreter
+
+## This is a project to create our simple shell interpreter
 Compilation
 
 Our shell will be compiled this way:
