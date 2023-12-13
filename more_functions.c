@@ -17,10 +17,10 @@ int interactive(info_t *info)
  * @delim: the delimeter string pointer
  * Return: 1 if true, 0 if false
  */
-int is_delim(char c, char *delim)
+int is_delim(char c, char *delimtr)
 {
-	while (*delim)
-		if (*delim++ == c)
+	while (*delimtr)
+		if (*delimtr++ == c)
 			return (1);
 	return (0);
 }
