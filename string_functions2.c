@@ -37,7 +37,7 @@ void _puts(char *s)
 		return;
 	while (s[j] != '\0')
 	{
-		_putchar(str[j]);
+		_putchar(s[j]);
 		j++;
 	}
 }
