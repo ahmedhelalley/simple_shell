@@ -1,11 +1,11 @@
 #include "shell.h"
-
 /**
  * _strcmp - performs lexicogarphic comparison of two strangs.
  * @str1: the first strang
  * @str2: the second strang
  *
- * Return: negative if str1 < str2, positive if str1 > str2, zero if str1 == str2
+ * Return: negative if str1 < str2,
+ * positive if str1 > str2, zero if str1 == str2
  */
 int _strcmp(char *str1, char *str2)
 {
@@ -21,7 +21,6 @@ int _strcmp(char *str1, char *str2)
 	else
 		return (*str1 < *str2 ? -1 : 1);
 }
-
 /**
  * starts_with - checks if needle starts with haystack
  * @haystack: string to search
@@ -36,7 +35,6 @@ char *starts_with(const char *haystack, const char *needle)
 			return (NULL);
 	return ((char *)haystack);
 }
-
 /**
  * _strlen - returns the length of a string
  * @str: the string whose length to check
@@ -54,7 +52,6 @@ int _strlen(char *str)
 		i++;
 	return (i);
 }
-
 /**
  * _strcat - concatenates two strings
  * @dest: the destination buffer
