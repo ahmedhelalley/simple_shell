@@ -10,10 +10,10 @@ Testing
 Your shell should work like this in interactive mode:
 
 $ ./hsh
-($) /bin/ls
+$ /bin/ls
 hsh main.c shell.c
-($)
-($) exit
+$
+$ exit
 $
 
 But also in non-interactive mode:
