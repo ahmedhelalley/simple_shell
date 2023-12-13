@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * **strtow2 - splits a string into words
  * @str: the input string
@@ -44,7 +43,6 @@ char **strtow2(char *str, char delim)
 	s[j] = NULL;
 	return (s);
 }
-
 /**
  * **strtow - splits a string into words. Repeat delimiters are ignored
  * @str: the input string

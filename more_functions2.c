@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * print_error - prints an error message
  * @info: the parameter & return info struct
@@ -17,7 +16,6 @@ void print_error(info_t *info, char *errstr)
 	_eputs(": ");
 	_eputs(errstr);
 }
-
 /**
  * print_d - function prints a decimal (integer) number (base 10)
  * @inp: the input
@@ -56,7 +54,6 @@ int print_d(int inp, int fd)
 
 	return (count);
 }
-
 /**
  * remove_comments - function replaces first instance of '#' with '\0'
  * @buff: address of the string to modify
@@ -74,7 +71,6 @@ void remove_comments(char *buff)
 			break;
 		}
 }
-
 /**
  * convert_number - converter function, a clone of itoa
  * @no: number
@@ -110,7 +106,6 @@ char *convert_number(long int no, int base, int flags)
 		*--pt = sign;
 	return (pt);
 }
-
 /**
  * _erratoi - converts a string to an integer
  * @str: the string to be converted
