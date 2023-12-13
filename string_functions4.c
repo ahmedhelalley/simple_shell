@@ -58,7 +58,7 @@ char **strtow(char *str, char *delim)
 
 	if (str == NULL || str[0] == 0)
 		return (NULL);
-	if (!delimd)
+	if (!delim)
 		delim = " ";
 	for (i = 0; str[i] != '\0'; i++)
 		if (!is_delim(str[i], delim) && (is_delim(str[i + 1], delim) || !str[i + 1]))
@@ -71,7 +71,7 @@ char **strtow(char *str, char *delim)
 		return (NULL);
 	for (i = 0, j = 0; j < numwords; j++)
 	{
-		while (is_delim(str[i], d))
+		while (is_delim(str[i], delim))
 			i++;
 		k = 0;
 		while (!is_delim(str[i + k], delim) && str[i + k])
