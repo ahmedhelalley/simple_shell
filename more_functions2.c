@@ -2,7 +2,7 @@
 
 /**
  * _erratoi - converts a string to an integer
- * @s: the string to be converted
+ * @s: pointer to the string to be converted
  * Return: 0 if no numbers in string, converted number otherwise
  *       -1 on error
  */
@@ -30,8 +30,8 @@ int _erratoi(char *s)
 
 /**
  * print_error - prints an error message
- * @info: the parameter & return info struct
- * @estr: string containing specified error type
+ * @info: A pointer to the parameter & return info struct
+ * @estr: A pointer to the string containing specified error type
  * Return: 0 if no numbers in string, converted number otherwise
  *        -1 on error
  */
@@ -87,9 +87,9 @@ int print_d(int input, int fd)
 
 /**
  * convert_number - converter function, a clone of itoa
- * @num: number
- * @base: base
- * @flags: argument flags
+ * @num: number var
+ * @base: base var
+ * @flags:the argument flags
  *
  * Return: string
  */
@@ -125,7 +125,7 @@ char *convert_number(long int num, int base, int flags)
  * remove_comments - function replaces first instance of '#' with '\0'
  * @buf: address of the string to modify
  *
- * Return: Always 0;
+ * Return: 0
  */
 void remove_comments(char *buf)
 {
