@@ -4,7 +4,7 @@
 ## This is a project to create our simple shell interpreter
 Compilation
 
-Our shell will be compiled this way:
+### Our shell will be compiled this way:
 
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
