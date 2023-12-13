@@ -68,7 +68,7 @@ char **list_to_strings(list_t *h)
 			return (NULL);
 		}
 
-		s = _strcpy(s, node->str);
+		s = _strcpy(s, n->str);
 		strs[k] = s;
 	}
 	strs[k] = NULL;
