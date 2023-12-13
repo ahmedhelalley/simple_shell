@@ -1,6 +1,50 @@
 #include "shell.h"
 
 /**
+ * input_buf - buffers chained commands
+ * @info: parameter struct
+ * @buff: address of buffer
+ * @len: address of len var
+ *
+ * Return: bytes read
+ */
+ssize_t input_buf(info_t *info, char **buff, size_t *len)
+{
+	ssize_t ret = 0;
+	size_t len_p = 0;
+
+	if (!*len) /* if nothing left in the buffer, fill it */
+	{
+		/*bfree((void **)info->cmd_buf);*/
+		free(*buff);
+		*buff = NULL;
+		signal(SIGINT, sigintHandler);
+#if USE_GETLINE
+		ret = getline(buff, &len_p, stdin);
+#else
+		ret = _getline(info, buff, &len_p);
+#endif
+		if (ret > 0)
+		{
+			if ((*buff)[ret - 1] == '\n')
+			{
+				(*buff)[ret - 1] = '\0'; /* remove trailing newline */
+				ret--;
+			}
+			info->linecount_flag = 1;
+			remove_comments(*buff);
+			build_history_list(info, *buff, info->histcount++);
+			/* if (_strchr(*buf, ';')) is this a command chain? */
+			{
+				*len = ret;
+				info->cmd_buf = buff;
+			}
+		}
+	}
+	return (ret);
+}
+
+/**
  * get_input - gets a line minus the newline
  * @info: parameter struct
  *
@@ -43,50 +87,6 @@ ssize_t get_input(info_t *info)
 
 	*buff_p = buff; /* else not a chain, pass back buffer from _getline() */
 	return (r); /* return length of buffer from _getline() */
-}
-
-/**
- * input_buf - buffers chained commands
- * @info: parameter struct
- * @buff: address of buffer
- * @len: address of len var
- *
- * Return: bytes read
- */
-ssize_t input_buf(info_t *info, char **buff, size_t *len)
-{
-	ssize_t ret = 0;
-	size_t len_p = 0;
-
-	if (!*len) /* if nothing left in the buffer, fill it */
-	{
-		/*bfree((void **)info->cmd_buf);*/
-		free(*buff);
-		*buff = NULL;
-		signal(SIGINT, sigintHandler);
-#if USE_GETLINE
-		ret = getline(buff, &len_p, stdin);
-#else
-		ret = _getline(info, buff, &len_p);
-#endif
-		if (ret > 0)
-		{
-			if ((*buff)[ret - 1] == '\n')
-			{
-				(*buff)[ret - 1] = '\0'; /* remove trailing newline */
-				ret--;
-			}
-			info->linecount_flag = 1;
-			remove_comments(*buff);
-			build_history_list(info, *buff, info->histcount++);
-			/* if (_strchr(*buf, ';')) is this a command chain? */
-			{
-				*len = ret;
-				info->cmd_buf = buff;
-			}
-		}
-	}
-	return (ret);
 }
 
 /**

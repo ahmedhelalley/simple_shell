@@ -16,8 +16,8 @@ void free_list(list_t **h_pt)
 	n = h;
 	while (n)
 	{
-		n_node = node->next;
-		free(node->str);
+		n_node = n->next;
+		free(n->str);
 		free(n);
 		n = n_node;
 	}
@@ -45,14 +45,14 @@ list_t *add_node(list_t **h, const char *s, int num)
 	n_head->num = num;
 	if (s)
 	{
-		new_head->str = _strdup(s);
-		if (!new_head->str)
+		n_head->str = _strdup(s);
+		if (!n_head->str)
 		{
 			free(n_head);
 			return (NULL);
 		}
 	}
-	new_head->next = *h;
+	n_head->next = *h;
 	*h = n_head;
 	return (n_head);
 }
@@ -89,8 +89,8 @@ list_t *add_node_end(list_t **h, const char *s, int num)
 	}
 	if (n)
 	{
-		while (node->next)
-			n = node->next;
+		while (n->next)
+			n = n->next;
 		n->next = n_node;
 	}
 	else
@@ -108,7 +108,7 @@ size_t print_list_str(const list_t *head)
 {
 	size_t j = 0;
 
-	while (p)
+	while (head)
 	{
 		_puts(head->str ? head->str : "(nil)");
 		_puts("\n");
