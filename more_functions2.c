@@ -59,82 +59,82 @@ int print_d(int inp, int fd)
 
 /**
  * remove_comments - function replaces first instance of '#' with '\0'
- * @buf: address of the string to modify
+ * @buff: address of the string to modify
  *
  * Return: Always 0;
  */
-void remove_comments(char *buf)
+void remove_comments(char *buff)
 {
-	int i;
+	int j;
 
-	for (i = 0; buf[i] != '\0'; i++)
-		if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
+	for (j = 0; buff[j] != '\0'; j++)
+		if (buff[j] == '#' && (!j || buff[j - 1] == ' '))
 		{
-			buf[i] = '\0';
+			buff[j] = '\0';
 			break;
 		}
 }
 
 /**
  * convert_number - converter function, a clone of itoa
- * @num: number
+ * @no: number
  * @base: base
  * @flags: argument flags
  *
  * Return: string
  */
-char *convert_number(long int num, int base, int flags)
+char *convert_number(long int no, int base, int flags)
 {
 	static char *array;
-	static char buffer[50];
+	static char buff[50];
 	char sign = 0;
-	char *ptr;
-	unsigned long n = num;
+	char *pt;
+	unsigned long n = no;
 
-	if (!(flags & CONVERT_UNSIGNED) && num < 0)
+	if (!(flags & CONVERT_UNSIGNED) && no < 0)
 	{
-		n = -num;
+		n = -no;
 		sign = '-';
 
 	}
 	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
-	ptr = &buffer[49];
-	*ptr = '\0';
+	pt = &buff[49];
+	*pt = '\0';
 
 	do	{
-		*--ptr = array[n % base];
+		*--pt = array[n % base];
 		n /= base;
 	} while (n != 0);
 
 	if (sign)
-		*--ptr = sign;
-	return (ptr);
+		*--pt = sign;
+	return (pt);
 }
 
 /**
  * _erratoi - converts a string to an integer
- * @s: the string to be converted
+ * @str: the string to be converted
  * Return: 0 if no numbers in string, converted number otherwise
  *       -1 on error
  */
-int _erratoi(char *s)
+int _erratoi(char *str)
 {
-	int i = 0;
-	unsigned long int result = 0;
+	int j = 0;
+	unsigned long int res = 0;
 
-	if (*s == '+')
-		s++;  /* TODO: why does this make main return 255? */
-	for (i = 0;  s[i] != '\0'; i++)
+	if (*str == '+')
+		str++;  /* TODO: why does this make main return 255? */
+	for (j = 0;  str[j] != '\0'; j++)
 	{
-		if (s[i] >= '0' && s[i] <= '9')
+		if (str[j] >= '0' && str[j] <= '9')
 		{
-			result *= 10;
-			result += (s[i] - '0');
-			if (result > INT_MAX)
+			res *= 10;
+			res += (str[j] - '0');
+			if (res > INT_MAX)
 				return (-1);
 		}
 		else
 			return (-1);
 	}
-	return (result);
+	return (res);
 }
